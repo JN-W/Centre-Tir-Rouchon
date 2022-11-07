@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La vie du club{% endblock %}
+
+{% block body %}
+    {% include 'partial/_button_filter.html.twig' %}
+    <div class="container">
+
+
+        {% for result in allSportResults %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src={{ result.image }} class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ result.title }}</h5>
+                            <p class="card-text"> {{ result.recap }}</p>
+                            <p class="card-text"><small class="text-muted">Publié le ... </small></p>
+                            <a href="#" class="btn btn-info m-md-2">Voir l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

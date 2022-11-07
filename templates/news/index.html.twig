@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle publication{% endblock %}
+
+{% block body %}
+       <h1 class="text-center m-4 p-4"> Bienvenu sur la page de création de publications</h1>
+<div class="container">
+
+    {{ form_start(form) }}
+       {{ form_row(form.title) }}
+       {{ form_row(form.recap) }}
+       {{ form_row(form.content) }}
+       {{ form_row(form.image) }}
+       {{ form_row(form.category) }}
+       {{ form_row(form.creationDate) }}
+
+       <div class="d-grid gap-2 col-6 mx-auto m-4 p-4">
+              <button class="btn btn-info" type="submit">Publier</button>
+       </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

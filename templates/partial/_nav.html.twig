@@ -1,0 +1,46 @@
+{% block nav %}
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top">
+            <img src="https://www.fftir.org/wp-content/uploads/2021/01/Logo-FFTIR-1.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            CENTRE DE TIR ROUCHON
+        </a>
+        <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+{#            <i class="bi bi-menu-down"></i>#}
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto text-uppercase">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/home" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Accueil
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#introduction">Le centre de tir rouchon</a></li>
+                        <li><a class="dropdown-item" href="#">Notre club house</a></li>
+                        <li><a class="dropdown-item" href="#portfolio">Nos pas de tir</a></li>
+                        <li><a class="dropdown-item" href="#contact">Formulaire de contact</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/blog">La vie du club</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">Inscription</a></li>
+                <li class="nav-item"><a class="nav-link" href="/home2">Temp</a></li>
+
+            </ul>
+
+        </div>
+{#        Position du bouton login à voir et corriger#}
+        <div class="d-flex">
+            {% if app.user %}
+                <a class="nav-link btn btn-outline-secondary p-2" href="{{path('logout')}}" type="button"><i class="bi bi-box-arrow-right"></i></a>
+            {% else %}
+                <a class="nav-link btn btn-outline-secondary p-2" href="{{path('login')}}" type="button"><i class="bi bi-box-arrow-in-right"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+
+
+{% endblock %}

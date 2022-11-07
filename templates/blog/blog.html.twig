@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La vie du club{% endblock %}
+
+{% block body %}
+
+
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+{% include'partial/_nav.html.twig' %}
+<header class="masthead" style="background-image:url({{ asset('images/wa2.jpeg') }});">
+    <div class="container">
+        <div class="intro-text">
+            {#                <div class="intro-lead-in">#}
+            {#                    <span class="yellow">Centre de tir de Roche-La-Molière</span>#}
+            {#                </div>#}
+            <div class="intro-heading ">
+                <span class="black"><strong>Voici les dernières actualités et résultats sportifs du club</strong></span>
+            </div>
+        </div>
+    </div>
+</header>
+    {% include 'partial/_button_filter.html.twig' %}
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase">About</h2>
+                <h3 class="text-muted section-subheading">Voici les dernières actualités et résultats sportifs du club</h3>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-group timeline">
+                    {{ dump(allNews) }}
+                    {% for key, actu in allNews %}
+                        {% if loop.index % 2 %}
+                            <li class="list-group-item">
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="{{ actu.image }}">
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Mars 2012</h4>
+                                        <h4 class="subheading">{{ actu.title }}</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{ actu.content }}</p>
+                                        {#                                        test bouton#}
+                                        {% if app.user and is_granted('ROLE_ADMIN')  %}
+                                            <a href="{{path('app_news_modifynews', {'id': actu.id})}}" class="btn btn-warning m-md-2"><i class="bi bi-pen"></i></a>
+                                            <a href="{{path('app_news_deletenews', {'id': actu.id})}}" class="btn btn-danger m-md-2"><i class="bi bi-trash3"></i></a>
+                                        {% endif %}
+                                        <a href="#" class="btn btn-info m-md-2"><i class="bi bi-book"></i></a>
+                                        {#                                        fin test bouton#}
+                                    </div>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li class="list-group-item timeline-inverted">
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="{{ actu.image }}">
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>March 2011</h4>
+                                        <h4 class="subheading">{{ actu.title }}</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{ actu.content }} </p>
+{#                                        test bouton#}
+                                        {% if app.user and is_granted('ROLE_ADMIN')  %}
+                                            <a href="{{path('app_news_modifynews', {'id': actu.id})}}" class="btn btn-warning m-md-2"><i class="bi bi-pen"></i></a>
+                                            <a href="{{path('app_news_deletenews', {'id': actu.id})}}" class="btn btn-danger m-md-2"><i class="bi bi-trash3"></i></a>
+                                        {% endif %}
+                                        <a href="#" class="btn btn-info m-md-2"><i class="bi bi-book"></i></a>
+{#                                        fin test bouton#}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+
+
+                    <li class="list-group-item timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>
+                                <a class="nav-link" href="/register">
+                                    Venez<br>nous<br>&nbsp;rejoindre
+                                </a>
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

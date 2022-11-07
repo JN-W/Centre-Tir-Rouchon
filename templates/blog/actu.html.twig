@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La vie du club{% endblock %}
+
+{% block body %}
+    <body>
+
+    {% include 'partial/_nav.html.twig' %}
+    <div class="container">
+
+
+        {% for clubNews in allClubNews %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src={{ clubNews.image }} class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ clubNews.title }}</h5>
+                            <p class="card-text"> {{ clubNews.recap }}</p>
+                            <p class="card-text"><small class="text-muted">Publié le ... </small></p>
+                            <a href="#" class="btn btn-info m-md-2">Voir l'article complet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+    </body>
+
+{% endblock %}

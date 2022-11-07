@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+{% include'partial/_nav.html.twig' %}
+<header class="masthead" style="background-image:url({{ asset('images/ap1.jpg') }});">
+    <div class="container">
+        <div class="intro-text">
+            {#                <div class="intro-lead-in">#}
+            {#                    <span class="yellow">Centre de tir de Roche-La-Molière</span>#}
+            {#                </div>#}
+            <div class="intro-heading ">
+                <span class="yellow"><strong>Vous souhaitez vous inscrire ?</strong></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ">
+                <h2 class="text-uppercase section-heading">Bienvenu !</h2>
+                <h3 class="section-subheading">
+                    {#                        Texte à revoir avec Laurent#}
+                    Le centre de tir rouchon est toujours heureux d'accueillir des pratiquants du tir sportif, qu'ils soient débutants ou confirmés. Pour vous inscrire au club, vous devrez nous fournir un dossier avec les éléments suivants :
+                                    </h3>
+            </div>
+        </div>
+
+        <div class="row ">
+
+            <div class="col-lg-12"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                <ul class="listeNoBullet">
+                    <li><i class="bi bi-award"></i>Une photo d’identité récente avec nom au dos</li>
+                    <li><i class="bi bi-award"></i>Une copie rect/verso de la carte nationale d'identité</li>
+                    <li><i class="bi bi-award"></i>Une attestation médicale</li>
+                    <li><i class="bi bi-award"></i>Pour les majeurs : un extrait de casier judiciaire</li>
+                    <li><i class="bi bi-award"></i>Pour les mineurs : une autorisation parentale avec copie du livret de famill</li>
+                    <li><i class="bi bi-award"></i>Le formulaire d’inscription au club (disponible ici), signé et rempli, attestant la remise et acceptation du règlement intérieur</li>
+                    <li><i class="bi bi-award"></i>Le règlement des frais d'adhésion et de licence</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ">
+                <h2 class="text-uppercase section-heading">Tarif</h2>
+                <h3 class="section-subheading">
+                    {#                        Texte à revoir avec Laurent#}
+                    Voici les tarifs de l'adhésion au club et de la licence FFTir. N'hésitez pas à nous contacter pour plus de renseignements
+                </h3>
+            </div>
+        </div>
+
+        <div class="row ">
+
+            <div class="col-lg-12"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                <ul class="listeNoBullet">
+                    <li>Enfant -12 ans</li>
+                    <li>Enfant 12-18 ans</li>
+                    <li>Adulte >18 ans</li>
+                    <li>Vétéran >60 ans</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,348 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+{% include'partial/_nav.html.twig' %}
+    <header class="masthead" style="background-image:url({{ asset('images/ap2.jpg') }});">
+        <div class="container">
+            <div class="intro-text">
+{#                <div class="intro-lead-in">#}
+{#                    <span class="yellow">Centre de tir de Roche-La-Molière</span>#}
+{#                </div>#}
+                <div class="intro-heading ">
+                    <span class="yellow"><strong>Venez découvrir le tir sportif avec nous</strong></span>
+                </div>
+                <a class="btn btn-primary btn-xl text-uppercase" role="button" href="#introduction">Je veux en savoir plus !</a>
+            </div>
+        </div>
+    </header>
+    <section id="introduction">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Quelques chiffres pour nous présenter</h2>
+                    <h3 class="section-subheading">
+{#                        Texte à revoir avec Laurent#}
+                        Basé à Roche-la-Molière dans la Loire (42), le centre de tir rouchon a été fondé en <strong class="focusNumber">1984</strong>. <br>
+                        Il compte actuellement <strong class="focusNumber">200</strong> adhérents, dont <strong class="focusNumber">3</strong> arbitres nationaux, et permet la pratique de <strong class="focusNumber">3</strong> disciplines de tir grâce à ses <strong class="focusNumber">3</strong> pas de tirs homologués FFTir.<br>
+                        Il propose <strong class="focusNumber">3</strong> créneaux d'entrainement par semaine, dans une ambiance conviale sans pour autant négliger la sécurité.<br>
+                        En 2021, le centre de tir rouchon a été présent à <strong class="focusNumber">23</strong> compétitions !<br>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row text-center">
+
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Adresse</h4>
+                    <p>15 rue du Vercors<br> 42230 Roche-La-Molière</p>
+                </div>
+
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Horaires</h4>
+                    <p>
+                        <ul class="listeNoBullet">
+                            <li>Jeudi : 16h - 19h</li>
+                            <li>Vendredi : 16h - 19h</li>
+                            <li>Samedi : 14h - 16h</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-lock fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Contacts</h4>
+                    <p>
+                        <ul class="listeNoBullet">
+                            <li class="listeNoBullet"><i class="bi bi-telephone"></i> - 07 69 69 05 91</li>
+                            <li class="listeNoBullet"><i class="bi bi-envelope"></i> - Rochectr42@gmail.com</li>
+                            <li class="listeNoBullet"><i class="bi bi-file-earmark-text"></i> - Formulaire en bas de page</li>
+                        </ul>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-12"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
+                    <h4 class="section-heading">Plan d'accès</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11199.84707693667!2d4.325925!3d45.430272!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f5ae13e9235f3d%3A0x4d0cea7d61a8a7ed!2s15%20Rue%20du%20Vercors%2C%2042230%20Roche-la-Moli%C3%A8re!5e0!3m2!1sfr!2sfr!4v1664354849458!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+<section class="bg-light" id="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase section-heading">Notre club house</h2>
+                <h3 class=" section-subheading">
+                    Le club house est un lieu de convivialité dans le club. <br>
+                    C'est ici que vous retrouverez le permanent de garde à chaque entrainement.<br>
+                    C'est également au bar du club house que vous pourrez apprécier une boisson et acheter des consommables (cartouche et recharge d'air comprimé) au tarif préférentiel du club.<br>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 portfolio-item"><a class="portfolio-link" href="#portfolioModal1" data-bs-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('images/wa4.jpeg') }}">
+                </a>
+
+                <div class="portfolio-caption">
+                    <h4>Bureau du permanent</h4>
+                    <p class="text-muted">Un permanent est présent pendant chaque entrainement et s'assure de l'émargement des tireurs.</p>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 portfolio-item"><a class="portfolio-link" href="#portfolioModal2" data-bs-toggle="modal">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                    </div><img class="img-fluid" src="{{ asset('images/bar-resize-L2048.jpg') }}">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Après l'effort...</h4>
+                    <p class="text-muted">Le bar est propice à un moment de détente, avec ou sans alcool.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{#SECTION PAS DE TIR#}
+{#TOUS LES LIENS ET REFERENCE A REFAIRE#}
+    <section class="bg-light" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Nos pas de tir</h2>
+                    <h3 class=" section-subheading">Tous les pas de tir du centre sont homologués FFTir</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 portfolio-item"><a class="portfolio-link" href="#portfolioModal1" data-bs-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="{{ asset('images/simpleline201101883.jpg') }}">
+                    </a>
+
+                    <div class="portfolio-caption">
+                        <h4>5 pas de tir à 25m</h4>
+                        <p class="text-muted">Dont 2 équipés pour pistolet gros calibre</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 portfolio-item"><a class="portfolio-link" href="#portfolioModal2" data-bs-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="{{ asset('images/simpleline201101972.jpg') }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>6 pas de tir à 10m</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" style="background-image:url({{ asset('images/map-image.png') }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Formulaire de contact</h2>
+                    <h3 class=" section-subheading yellow">Ce formulaire est à votre disposition pour nous contacter</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="contactForm" name="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3"><input class="form-control" type="text" id="name" placeholder="Your Name *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
+                                <div class="form-group mb-3"><input class="form-control" type="email" id="email" placeholder="Your Email *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                                <div class="form-group mb-3"><input class="form-control" type="tel" placeholder="Your Phone *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Message *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success">
+
+                                </div>
+                                <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Brand 2022</span></div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal4">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal5">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal6">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Project Name</h2>
+                                <p class="text-muted item-intro">Lorem ipsum dolor sit amet consectetur.</p><img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6-full.jpg">
+                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                <ul class="list-unstyled">
+                                    <li>Date: January 2017</li>
+                                    <li>Client: Threads</li>
+                                    <li>Category: Illustration</li>
+                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i><span>&nbsp;Close Project</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
