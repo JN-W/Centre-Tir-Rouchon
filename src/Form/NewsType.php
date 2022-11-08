@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 class NewsType extends AbstractType
 {
@@ -16,7 +19,6 @@ class NewsType extends AbstractType
             ->add('title', null, ['label' => 'Titre de la publication'])
             ->add('recap', null, ['label' => 'Récapitulatif de la publication'])
             ->add('content', null, ['label' => 'Contenu complet de la publication'])
-            ->add('image')
             ->add('category',
 
 
@@ -29,6 +31,18 @@ class NewsType extends AbstractType
                                     ]
                 ])
             ->add('creationDate', null, ['label' => 'Date de création'])
+            ->add('Pic1', FileType::class, [
+                'label' => 'Ajouter une photo',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+
+
+            ])
         ;
     }
 

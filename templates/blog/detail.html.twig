@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La vie du club{% endblock %}
+
+{% block body %}
+
+
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+
+    {% include'partial/_nav.html.twig' %}
+
+    <header class="masthead" style="background-image:url({{ asset('images/wa2.jpeg') }});">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-heading ">
+                    <span class="black"><strong>Voici les dernières actualités et résultats sportifs du club</strong></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-grid  d-md-flex justify-content-md-center  m-2">
+        {% if app.user and is_granted('ROLE_ADMIN')  %}
+            <a href="{{path('app_news_modifynews', {'id': actu.id})}}" class="col-md-6 text-center col-12 m-2">
+                <button class="btn btn-outline-warning m-md-2 w-100" type="button">
+                    <i class="bi bi-pen"></i>
+                </button>
+            </a>
+            <a href="{{path('app_news_deletenews', {'id': actu.id})}}" class="col-md-6 text-center col-12 m-2">
+                <button class="btn btn-outline-danger m-md-2 w-100" type="button">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </a>
+        {% endif %}
+    </div>
+
+    <section id="" class="pt-2">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6 text-center align-items-center mt-auto">
+                    <h2 class="text-uppercase">{{ actu.title }}</h2>
+                    {% if actu.creationDate %}
+                        <h3 class="text-muted section-subheading">Article paru le {{ actu.creationDate.format('d/m/Y') }}</h3>
+                    {% endif %}
+                </div>
+
+                <div class="timeline-image col-md-6 text-center">
+                    <img class="rounded-circle img-fluid" src="{{ actu.pic1Asset }}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="timeline-body text-center">
+                    <p class="p-3">{{ actu.content }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{#    TEST CAROUSEL#}
+{#    A voir avec une array collection d'image stockée en BDD#}
+{#    <section>#}
+{#        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">#}
+{#            <div class="carousel-indicators">#}
+{#                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>#}
+{#                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>#}
+{#                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>#}
+{#            </div>#}
+{#            <div class="carousel-inner">#}
+{#                <div class="carousel-item active">#}
+{#                    <img src="" class="d-block w-100" alt="...">#}
+{#                </div>#}
+{#                <div class="carousel-item">#}
+{#                    <img src="{{ asset('images/32330894228_283bdcf31d_o.jpg') }}" class="d-block w-100" alt="...">#}
+{#                </div>#}
+{#                <div class="carousel-item">#}
+{#                    <img src="{{ asset('images/air-pistol-gfd0d587d3_1920.jpg') }}" class="d-block w-100" alt="...">#}
+{#                </div>#}
+{#            </div>#}
+{#            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">#}
+{#                <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#                <span class="visually-hidden">Previous</span>#}
+{#            </button>#}
+{#            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">#}
+{#                <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#                <span class="visually-hidden">Next</span>#}
+{#            </button>#}
+{#        </div>#}
+{#    </section>#}
+{#FIN TEST CAROUSEL#}
+
+
+
+</body>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

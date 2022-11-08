@@ -34,10 +34,11 @@ class AppFixtures extends Fixture
         $news1= New News();
         $news1
             ->setTitle('Welcome Tortuga')
+            ->setRecap('Recrutement international')
+            ->setContent('Recrutement du meilleur tireur des iles galapagos. La valeur n\'attend pas le nombre des années, et il peut déjà atteindre un bourdon à 50m les yeux fermés et dans le noir')
             ->setCategory('actualite')
-            ->setContent('Recrutement du meilleur tireur des iles galapagos. La valeur n\'attend pas le nombre des années, et il peut déjà émasculer un bourdon à 50m les yeux fermés')
-            ->setRecap('Tortuga s\'est inscrit au CTR')
-            ->setImage('https://www.consoglobe.com/wp-content/uploads/2016/12/adopter-tortue-1.jpg');
+            ->setCreationDate('')
+            ->setPic1('C:\xampp\apps\Centre-Tir-Rouchon\public\images\1.jpg');
         $manager->persist($news1);
 
         $news2= New News();

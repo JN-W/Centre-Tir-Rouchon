@@ -20,6 +20,16 @@ class BlogController extends AbstractController
         ]);
     }
 
+    #[Route('/blog/{id}', name: 'app_blog_detail')]
+    public function detail(News $news, ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(News::class);
+//        $news = $repository->findAll();
+        return $this->render('blog/detail.html.twig', [
+            'actu' => $news,
+        ]);
+    }
+
     #[Route('/blog/news')]
     public function blogNews(ManagerRegistry $doctrine): Response
     {

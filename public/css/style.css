@@ -5,8 +5,13 @@
   font-weight: bold;
 }
 
-.black, a.nav-link{
+.black{
   color:#000000;
+  /*retrait de cette classe pour styliser le bouton de connection en jaune , a.nav-link => impact ailleurs à surveiller*/
+}
+
+.btn-connect:hover{
+  color: #000000;
 }
 
 .focusNumber {
@@ -16,6 +21,15 @@
 .listeNoBullet{
   list-style: none;
 }
+
+/*.blur{*/
+
+/*  z-index: -1;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  -webkit-filter: blur(10px); !* Safari 6.0 - 9.0 *!*/
+/*  filter: blur(10px);*/
+/*}*/
 
 /*--------------------------------------------------------------
 # Counts

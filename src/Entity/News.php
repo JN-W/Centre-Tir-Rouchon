@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\NewsRepository;
+use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 #[ORM\Entity(repositoryClass: NewsRepository::class)]
+#[Vich\Uploadable]
 class News
 {
     #[ORM\Id]
@@ -31,6 +35,49 @@ class News
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $recap = null;
+
+    // ESSAI POUR UPLOAD IMAGE
+
+
+    #[ORM\Column(length: 255)]
+    private ?string $Pic1Filename  ;
+
+    public function getPic1Filename()
+    {
+        return $this->Pic1Filename;
+    }
+
+    public function setPic1Filename($Pic1Filename)
+    {
+        $this->Pic1Filename = $Pic1Filename;
+
+        return $this;
+    }
+
+    #[ORM\Column(length: 255)]
+    private ?string $Pic1Asset  ;
+
+    public function getPic1Asset()
+    {
+        return $this->Pic1Asset;
+    }
+
+    public function setPic1Asset($Pic1Asset)
+    {
+        $this->Pic1Asset = $Pic1Asset;
+
+        return $this;
+    }
+
+
+
+    // FIN ESSAI UPLOAD
+
+
+
+
+
+
 
     public function getId(): ?int
     {
