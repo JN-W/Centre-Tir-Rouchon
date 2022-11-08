@@ -2,8 +2,8 @@
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="{{ path('app_home_home', {'_fragment': 'introduction'}) }}">
-            <img src="https://www.fftir.org/wp-content/uploads/2021/01/Logo-FFTIR-1.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            CENTRE DE TIR ROUCHON
+            <img src="{{ asset('images/logo target.png') }}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+             CENTRE DE TIR IMAGINAIRE
         </a>
         <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
                         Accueil
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ path('app_home_home', {'_fragment': 'introduction'}) }}">Le centre de tir rouchon</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_home_home', {'_fragment': 'introduction'}) }}">Le centre de tir imaginaire</a></li>
                         <li><a class="dropdown-item" href="{{ path('app_home_home', {'_fragment': 'house'}) }}">Notre club house</a></li>
                         <li><a class="dropdown-item" href="{{ path('app_home_home', {'_fragment': 'portfolio'}) }}">Nos pas de tir</a></li>
                         <li><a class="dropdown-item" href="{{ path('app_home_home', {'_fragment': 'contact'}) }}">Formulaire de contact</a></li>
