@@ -20,16 +20,6 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/{id}', name: 'app_blog_detail')]
-    public function detail(News $news, ManagerRegistry $doctrine): Response
-    {
-        $repository = $doctrine->getRepository(News::class);
-//        $news = $repository->findAll();
-        return $this->render('blog/detail.html.twig', [
-            'actu' => $news,
-        ]);
-    }
-
     #[Route('/blog/news')]
     public function blogNews(ManagerRegistry $doctrine): Response
     {
@@ -51,4 +41,31 @@ class BlogController extends AbstractController
             'allSportResults' => $allSportResults,
         ]);
     }
+
+    // A SUPPRIMER
+//      Méthode initiale conservée en commentaire pendant le debug
+//    #[Route('/blog/{id}', name: 'app_blog_detail')]
+//    public function detail(News $news, ManagerRegistry $doctrine): Response
+//    {
+//        $repository = $doctrine->getRepository(News::class);
+//        $news = $repository->findAll();
+//        return $this->render('blog/detail.html.twig', [
+//            'actu' => $news,
+//        ]);
+//    }
+
+
+// Méthode debug
+// pourquoi faire un findAll pour afficher un seul article ???
+// Le param converter doit me trouver la news avec l'id de la route avant l'utilisation du controller
+// donc je n'ai qu'à passer cette news à l'affichage sans même appeler la BDD
+    #[Route('/blog/{id}', name: 'app_blog_detail')]
+    public function detail(News $news): Response
+    {
+        return $this->render('blog/detail.html.twig', [
+            'actu' => $news,
+        ]);
+    }
+
+
 }
