@@ -31,13 +31,15 @@ class NewsType extends AbstractType
                                     ]
                 ])
             ->add('creationDate', null, ['label' => 'Date de création'])
-            ->add('Pic1', FileType::class, [
+            ->add('pictures', FileType::class, [
                 'label' => 'Ajouter une photo',
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
                 // make it optional so you don't have to re-upload the PDF file
                 // every time you edit the Product details
                 'required' => false,
+                // To allow upload of several pictures
+                'multiple' => true
             ])
         ;
     }

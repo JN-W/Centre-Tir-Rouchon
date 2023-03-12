@@ -81,3 +81,24 @@
 .counts .count-box a:hover {
   color: #6e9fb4;
 }
+
+.timeline-miniature,
+.carousel-pic{
+  object-fit: cover;
+}
+
+.under-nav{
+  padding-top: 120px;
+}
+
+.card {
+  display:inline-block;
+  width: 18rem;
+}
+
+.my-card-img-top{
+  /*width: -webkit-fill-available;*/
+  /*height: auto;*/
+  object-fit: cover;
+  /*overflow: hidden;*/
+}

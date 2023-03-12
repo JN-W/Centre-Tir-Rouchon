@@ -3,16 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\News;
+use App\Entity\Picture;
 use App\Form\NewsType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\HttpFoundation\File\File;
 
 
 
@@ -25,46 +24,53 @@ class NewsController extends AbstractController
         $form = $this->createForm(NewsType::class, $news);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-            /** @var UploadedFile $Pic1File */
-        {
-            $Pic1File = $form->get('Pic1')->getData();
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if($Pic1File) {
-                $originalFilename = pathinfo($Pic1File->getClientOriginalName(), PATHINFO_FILENAME);
-                dump($originalFilename);
-                // this is needed to safely include the file name as part of the URL
+        if($form->isSubmitted() && $form->isValid()) {
+            // Get uploaded pictures
+            $pictures = $form->get('pictures')->getData();
+
+            // Loop on pictures
+            foreach ($pictures as $picture) {
+
+                // generate safe file name
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$Pic1File->guessExtension();
+                $file = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
 
-                $Pic1Asset = sprintf("/uploads/%s", $newFilename );
-                $news->setPic1Asset($Pic1Asset);
+                // copy file to picture upload directory
+                $picture->move(
+                            $this->getParameter('uploadedPic_directory'),
+                            $file
+                        );
 
-                // Move the file to the directory where brochures are stored
-                try {
-                    $Pic1File->move(
-                        $this->getParameter('uploadedPic_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... TO DO : handle exception if something happens during file upload
-                }
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $news->setPic1Filename($newFilename);
+                // Create picture instance in database
+                $pic = new Picture();
+                $pic->setPicFilename($file);
+                $pic->setPicAsset(sprintf("/uploads/%s", $file));
+                $news->addPicture($pic);
             }
 
+//----------------------------------------------------------------------
+//            // check if at least one picture has been uploaded
+//            if ($pictures) {
+//----------------------------------------------------------------------
+//                    // Move the file to the directory where brochures are stored
+//                    try {
+//                        move_uploaded_file($picture, 'uploadedPic_directory');
+//                        $picture->move(
+//                            $this->getParameter('uploadedPic_directory'),
+//                            $newFilename
+//                        );
+//                    } catch (FileException $e) {
+//                        // ... TO DO : handle exception if something happens during file upload
+//                    }
+// ----------------------------------------------------------
 
+                $entityManager = $doctrine->getManager();
+                $entityManager->persist($news);
+                $entityManager->flush();
 
-            // ... persist the $news variable or any other work
-
-
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($news);
-            $entityManager->flush();
-
-           return $this->redirectToRoute('app_blog_blog');
+                return $this->redirectToRoute('app_blog_blog');
+//            }
         }
 
         return $this->render('news/index.html.twig', [
@@ -72,41 +78,38 @@ class NewsController extends AbstractController
         ]);
     }
 
+
     #[Route('/news/modify/{id}')]
     public function modifyNews(News $news, Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(NewsType::class, $news);
-//        $news->setPic1Filename(new File($this->getParameter('uploadedPic_directory').'/'.$news->getPic1Filename()));
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $Pic1File = $form->get('Pic1')->getData();
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if($Pic1File) {
-                $originalFilename = pathinfo($Pic1File->getClientOriginalName(), PATHINFO_FILENAME);
-                dump($originalFilename);
-                // this is needed to safely include the file name as part of the URL
+        if($form->isSubmitted() && $form->isValid()){
+
+            // Get uploaded pictures
+            $pictures = $form->get('pictures')->getData();
+
+            // Loop on pictures
+            foreach ($pictures as $picture) {
+
+                // generate safe file name
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$Pic1File->guessExtension();
+                $file = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
 
-                $Pic1Asset = sprintf("/uploads/%s", $newFilename );
-                $news->setPic1Asset($Pic1Asset);
+                // copy file to picture upload directory
+                $picture->move(
+                    $this->getParameter('uploadedPic_directory'),
+                    $file
+                );
 
-                // Move the file to the directory where brochures are stored
-                try {
-                    $Pic1File->move(
-                        $this->getParameter('uploadedPic_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... TO DO : handle exception if something happens during file upload
-                }
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $news->setPic1Filename($newFilename);
-            }
+                // Create picture instance in database
+                $pic = new Picture();
+                $pic->setPicFilename($file);
+                $pic->setPicAsset(sprintf("/uploads/%s", $file));
+                $news->addPicture($pic);
+        }
 
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
@@ -115,6 +118,7 @@ class NewsController extends AbstractController
 
         return $this->render('news/index.html.twig', [
             'form' => $form->createView(),
+            'news' => $news
         ]);
     }
 
@@ -127,5 +131,29 @@ class NewsController extends AbstractController
         return $this->redirectToRoute('app_blog_blog');
     }
 
+    #[Route('/picture/delete/{id}')]
+    public function deletePicture(Picture $picture, ManagerRegistry $doctrine, Request $request){
+        $data = json_decode($request->getContent(), true);
 
+        // Check if token is ok
+        if($this->isCsrfTokenValid('delete'.$picture->getId(), $data['_token'])) {
+
+            // Get picture name
+            $name = $picture->getPicFilename();
+
+            // Delete file from server
+            unlink($this->getParameter('uploadedPic_directory').'/'.$name);
+
+            // Delete in database
+            $em = $doctrine->getManager();
+            $em->remove($picture);
+            $em->flush();
+
+            // Json response
+            return new JsonResponse(['success' => 1]);
+        } else {
+            return new JsonResponse(['error' => 'token invalide'],400);
+
+        }
+    }
 }

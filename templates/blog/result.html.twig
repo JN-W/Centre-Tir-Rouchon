@@ -3,28 +3,69 @@
 {% block title %}La vie du club{% endblock %}
 
 {% block body %}
-    {% include 'partial/_button_filter.html.twig' %}
-    <div class="container">
+    <body>
+
+    {% include 'partial/_nav.html.twig' %}
+    <div class="container under-nav">
+
+        {#        WITHOUT CAROUSEL#}
+        {#        Add if to check if there are pictures in the news#}
+
+        {#        <div class="row">#}
+        {#            {% for result in allSportResults %}#}
+        {#                <div class="col-3 m-4">#}
+        {#                    <div class="card h-100 ">#}
+        {#                        <img src="{{ result.pictures[0].getPicAsset() }}" class="p-1 card-img-top my-card-img-top" alt="photo de l'évènement">#}
+        {#                        <div class="card-body">#}
+        {#                            <h5 class="card-title">{{ result.title }}</h5>#}
+        {#                            <p class="card-text"> {{ result.recap }}</p>#}
+        {#                            <p class="card-text"><small class="text-muted">Publié le {{ result.creationDate.format('d/m/Y')}} </small></p>#}
+        {#                            <a href="#" class="btn btn-info m-md-2">Voir l'article complet</a>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            {% endfor %}#}
+        {#        </div>#}
+        {#        ---------------#}
 
 
-        {% for result in allSportResults %}
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src={{ result.image }} class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
+        {#        WITH CAROUSEL#}
+        <div class="row">
+            {% for result in allSportResults %}
+                <div class="col-3 m-4">
+                    <div class="card h-100 ">
+                        <div class="row">
+                            <div id="{{ 'carousel-detail-news' ~ result.id }}" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    {%  for picture in result.getPictures() %}
+                                        <div class="carousel-item {% if loop.first %} active {% endif %}">
+                                            <img src="{{ picture.getPicAsset()}}" class="d-block w-100 carousel-pic" alt="...">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="{{ '#carousel-detail-news' ~ result.id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="{{ '#carousel-detail-news' ~ result.id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ result.title }}</h5>
                             <p class="card-text"> {{ result.recap }}</p>
-                            <p class="card-text"><small class="text-muted">Publié le ... </small></p>
-                            <a href="#" class="btn btn-info m-md-2">Voir l'article complet</a>
+                            <p class="card-text"><small class="text-muted">Publié le {{ result.creationDate.format('d/m/Y')}} </small></p>
+                            <a href="{{ path('app_blog_detail', {'id': result.id})}}" class="btn btn-info m-md-2">Voir l'article complet</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
+        </div>
+        {#    ---------------------#}
 
-        {% endfor %}
     </div>
+    </body>
 
 {% endblock %}

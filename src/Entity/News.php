@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NewsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,9 +26,6 @@ class News
     #[ORM\Column(length: 3000)]
     private ?string $content = null;
 
-    #[ORM\Column(length: 1000, nullable: true)]
-    private ?string $image = null;
-
     #[ORM\Column(length: 10)]
     private ?string $category = null;
 
@@ -36,48 +35,13 @@ class News
     #[ORM\Column(type: Types::TEXT)]
     private ?string $recap = null;
 
-    // ESSAI POUR UPLOAD IMAGE
+    #[ORM\OneToMany(mappedBy: 'news', targetEntity: Picture::class, orphanRemoval: true, cascade: ['persist'])]
+    private Collection $pictures;
 
-
-    #[ORM\Column(length: 255)]
-    private ?string $Pic1Filename  ;
-
-    public function getPic1Filename()
+    public function __construct()
     {
-        return $this->Pic1Filename;
+        $this->pictures = new ArrayCollection();
     }
-
-    public function setPic1Filename($Pic1Filename)
-    {
-        $this->Pic1Filename = $Pic1Filename;
-
-        return $this;
-    }
-
-    #[ORM\Column(length: 255)]
-    private ?string $Pic1Asset  ;
-
-    public function getPic1Asset()
-    {
-        return $this->Pic1Asset;
-    }
-
-    public function setPic1Asset($Pic1Asset)
-    {
-        $this->Pic1Asset = $Pic1Asset;
-
-        return $this;
-    }
-
-
-
-    // FIN ESSAI UPLOAD
-
-
-
-
-
-
 
     public function getId(): ?int
     {
@@ -104,18 +68,6 @@ class News
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -152,6 +104,36 @@ class News
     public function setRecap(string $recap): self
     {
         $this->recap = $recap;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Picture>
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures->add($picture);
+            $picture->setNews($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->removeElement($picture)) {
+            // set the owning side to null (unless already changed)
+            if ($picture->getNews() === $this) {
+                $picture->setNews(null);
+            }
+        }
 
         return $this;
     }

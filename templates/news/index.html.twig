@@ -10,14 +10,29 @@
        {{ form_row(form.title) }}
        {{ form_row(form.recap) }}
        {{ form_row(form.content) }}
-{#       {{ form_row(form.image) }}#}
        {{ form_row(form.category) }}
        {{ form_row(form.creationDate) }}
-       {{ form_row(form.Pic1) }}
+       {{ form_row(form.pictures) }}
 
+       {#       Check if we are in modifying news to display pictures #}
+       {%  if app.request.attributes.get('_route') == 'app_news_modifynews' %}
+
+       <h2>Images de la publication</h2>
+              {% for picture in news.pictures %}
+                     <div>
+                            <img src="{{ picture.getPicAsset() }}" alt="image de la publi" width="150">
+                            <a href="{{ path('app_news_deletepicture', {id:picture.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ picture.id) }}"> Supprimer </a>
+                     </div>
+
+              {% endfor %}
+       {% endif %}
        <div class="d-grid gap-2 col-6 mx-auto m-4 p-4">
               <button class="btn btn-info" type="submit">Publier</button>
        </div>
     {{ form_end(form) }}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/picture.js') }}"></script>
 {% endblock %}

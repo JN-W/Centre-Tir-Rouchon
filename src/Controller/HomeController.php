@@ -20,15 +20,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/home2')]
-    public function home2(ManagerRegistry $doctrine): Response
-    {
-        $repository = $doctrine->getRepository(News::class);
-        $allNews = $repository->findAll();
-        return $this->render('home/index.html.twig', [
-            'allNews' => $allNews,
-        ]);
-    }
 
 }
 
