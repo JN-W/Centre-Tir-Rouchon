@@ -13,11 +13,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 
 class NewsController extends AbstractController
 {
     #[Route('/news/create', name: 'app_news')]
+    #[IsGranted('ROLE_ADMIN')]
     public function createNews(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $news = new News();
@@ -80,6 +83,7 @@ class NewsController extends AbstractController
 
 
     #[Route('/news/modify/{id}')]
+    #[IsGranted('ROLE_ADMIN')]
     public function modifyNews(News $news, Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(NewsType::class, $news);
@@ -123,6 +127,7 @@ class NewsController extends AbstractController
     }
 
     #[Route('/news/delete/{id}')]
+    #[IsGranted('ROLE_ADMIN')]
     public function deleteNews(News $news, ManagerRegistry $doctrine): Response
     {
             $entityManager = $doctrine->getManager();
@@ -132,6 +137,7 @@ class NewsController extends AbstractController
     }
 
     #[Route('/picture/delete/{id}')]
+    #[IsGranted('ROLE_ADMIN')]
     public function deletePicture(Picture $picture, ManagerRegistry $doctrine, Request $request){
         $data = json_decode($request->getContent(), true);
 
