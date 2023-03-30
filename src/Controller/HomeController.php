@@ -10,6 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+
+    #[Route('/', name: 'app_landing')]
+    public function index(): Response
+    {
+        return $this->redirectToRoute('app_home_home');
+    }
+
     #[Route('/home')]
     public function home(ManagerRegistry $doctrine): Response
     {
